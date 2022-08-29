@@ -1,0 +1,32 @@
+Instalacion OpenCV + CMake + Mingw64 + Visual Studio Code (vscode)
+
+Paso a paso sugerido:
+
+1.- Instalacion de CMake: https://cmake.org/download/
+
+2.- Instalacion de Mingw64 y OpenCV 4.2.0 carpeta drive Ayudante: https://drive.google.com/drive/folders/1c0k30sSvRyl599CiA7RdWX2t1uu96QB7?usp=sharing
+2.1.- Descomprimir ambas carpetas, RECUERDEN DONDE LAS EXTRAEN y como consejo que todo este dentro del mismo disco en el computador facilitara la comunicacion entre programas.
+
+3.- Instalacion de VSCode: https://code.visualstudio.com/download
+3.1.- Instalacion de extensiones:
+	- CMake
+	- CMake Tools
+	- C/C++
+	- C/C++ Compile Run
+
+4.- Utilizar CMake para compilar OpenCV:
+4.1.- Abran CMake-GUI en el codigo fuente (Source Code) ponen el directorio de la carpeta descomprimida de opencv y donde crear los binarios, ahi eligen ustedes, ACUERDENSE!. Le dan a
+Configurar y despues a Generar, esta un buen rato creando los binarios asi que no se preocupen :)
+
+5.- Agregar los directorios nuevos a las variables de entorno:
+5.1.- Este paso es crucial, deben agregar las variables de sistema, en el panel de control en PATH, deben agregar lo siguiente:
+5.2.1- C:\opencv\install\x64\mingw\bin
+5.2.2.- C:\mingw64\mingw64\x86_64-w64-mingw32\bin
+5.2.3.- C:\mingw64\mingw64\bin
+
+OJO! los directorios cambian en relacion a donde ustedes descargaron las carpetas, no copien y peguen.
+
+6.- Ya casiiiii, Usar VSCode:
+6.1.- Ahora resta programar y Usar, crean una carpeta nueva, Ctrl + Shift + p y escriben cmake, y buscan el que diga Quick Start. Les va a preguntar por el compilador, deberia salir
+GCC 8.1.0... etc, les preguntara por el nombre del archivo principal (usualmente main) y le dan a ejecutable.
+6.2.- Esa es la base, ahora solo falta reemplazar el CMakeLists.txt por el que se encuentra en el repositorio y le dan a compilar, si les funciona todo gucci! 

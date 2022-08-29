@@ -4,6 +4,7 @@ project(main VERSION 0.1.0)
 include(CTest)
 enable_testing()
 
+# OJITO el directorio cambia por cada instalacion eso deben cambiarlo
 set(OpenCV_DIR C:/opencv)
 
 find_package( OpenCV REQUIRED )
