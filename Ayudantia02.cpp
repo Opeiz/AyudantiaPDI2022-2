@@ -1,5 +1,4 @@
 #include <opencv2/opencv.hpp>
-#include <opencv2/imgproc.hpp>
 #include <iostream>
 
 using namespace cv;
@@ -49,20 +48,11 @@ int main(int, char**){
     cvtColor(image,gray,COLOR_BGR2GRAY);
     cvtColor(image,yuv,COLOR_BGR2YUV);
     
-    // vector <Mat> planes;
-    // split(image,planes);
-    // imshow("Blue",planes[0]);
-    // imshow("Green",planes[1]);
-    // imshow("Red",planes[2]);
-    // Mat out;
-    // merge(planes,out);
-    // imshow("Out",out);
-    
     imshow("Original",image);
-    // imshow("RGB",rgb);
-    // imshow("HSV",hsv);
-    // imshow("Gray",gray);
-    // imshow("YUV",yuv);
+    imshow("RGB",rgb);
+    imshow("HSV",hsv);
+    imshow("Gray",gray);
+    imshow("YUV",yuv);
 
     inRange(hsv,Scalar(5,0,50),Scalar(50,255,255),Y);
     bitwise_or(image,image,bit,Y);
@@ -75,13 +65,28 @@ int main(int, char**){
 
     Mat Gaussian, Median, Average;
 
-    blur(image,Average,Size(5,5));
-    GaussianBlur(image,Gaussian,Size(5,5),0,0);
-    medianBlur(image,Median,5);
+    blur(gray,Average,Size(5,5));
+    GaussianBlur(gray,Gaussian,Size(5,5),0);
+    medianBlur(gray,Median,5);
     imshow("Average",Average);
     imshow("Gaussian",Gaussian);
     imshow("Median",Median);
 
-    waitKey(0);
+
+    // === Deteccion de Bordes ===
+
+    Mat SobelX, SobelY, SobelXY, edges;
+
+    Sobel(Gaussian, SobelX, CV_64F, 1,0,5);
+    Sobel(Gaussian, SobelY, CV_64F, 0,1,5);
+    Sobel(Gaussian, SobelXY, CV_64F, 1,1,5);
+    imshow("X",SobelX);
+    imshow("Y",SobelY);
+    imshow("XY",SobelXY);
+
+    Canny(Gaussian, edges, 100, 200 , 3);
+    imshow("Canny",edges);
+
+    waitKey(0); 
     destroyAllWindows();
 }
